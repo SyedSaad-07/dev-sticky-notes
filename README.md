@@ -35,16 +35,12 @@ You can also use this package inside your Node.js project:
 
 const { addNote, listNotes, deleteNote, searchNotes } = require("dev-sticky-notes");
 
-// Add a new note
 addNote("Meeting", "Discuss project updates");
 
-// List all notes
 listNotes();
 
-// Delete a note
 deleteNote("Meeting");
 
-// Search for a note
 searchNotes("project");
 
 ## 🌟 Contributing
