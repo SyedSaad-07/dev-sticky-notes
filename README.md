@@ -3,7 +3,7 @@
 A **simple CLI tool** to manage sticky notes. You can also **use it as a module in your Node.js code**.
 
 ## 📌 Features  
-- ✅ Add, list, delete, and search notes  
+- ✅ Add, list, delete, search notes, and exporting notes  
 - ✅ Use via **CLI** or **directly in your code**  
 - ✅ Lightweight and easy to use  
 
@@ -16,8 +16,8 @@ npm i dev-sticky-notes
 
 ## 📖 Usage
 Once installed, you can use the following commands in your terminal:
-✅ Add a new note:
-sticky-notes add "Meeting" "Discuss project updates"
+✅ Add a new note with tags (tags is optional):
+sticky-notes add "Meeting" "Discuss project updates" --tags work urgent
 
 ✅ List all notes:
 sticky-notes list
@@ -28,13 +28,18 @@ sticky-notes delete "Meeting"
 ✅ Search notes by keyword:
 sticky-notes search "project"
 
+✅ Export notes as .md file:
+sticky-notes export
+
 ---
 
 ## 📦 Using as a Module
 You can also use this package inside your Node.js project:
 
-const { addNote, listNotes, deleteNote, searchNotes } = require("dev-sticky-notes");
+const { addNote, listNotes, deleteNote, searchNotes, exportNotesToMarkDown } = require("dev-sticky-notes");
 
+addNote("Meeting", "Discuss project updates", ["work", "urgent"]);
+or
 addNote("Meeting", "Discuss project updates");
 
 listNotes();
@@ -42,6 +47,8 @@ listNotes();
 deleteNote("Meeting");
 
 searchNotes("project");
+
+exportNotesToMarkDown();
 
 ## 🌟 Contributing
 
