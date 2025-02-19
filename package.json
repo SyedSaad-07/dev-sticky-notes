@@ -1,0 +1,34 @@
+{
+  "name": "dev-sticky-notes",
+  "version": "1.0.0",
+  "description": "A CLI tool for developers to create, list, delete, and manage sticky notes stored in a local JSON file.",
+  "keywords": [
+    "npm", "cli", "notes", "sticky", "dev"
+  ],
+  "homepage": "https://github.com/SyedSaad-07/dev-sticky-notes#readme",
+  "bugs": {
+    "url": "https://github.com/SyedSaad-07/dev-sticky-notes/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SyedSaad-07/dev-sticky-notes.git"
+  },
+  "license": "Apache-2.0",
+  "author": "S.M.Saad",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "bin": {
+    "sticky-notes": "bin/sticky-notes.js"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "dependencies": {
+    "commander": "^13.1.0",
+    "fs-extra": "^11.3.0"
+  },
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0"
+  }
+}
