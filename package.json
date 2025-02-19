@@ -1,6 +1,6 @@
 {
   "name": "dev-sticky-notes",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A simple CLI tool to manage sticky notes. Use it via CLI or as a module in your code.",
   "keywords": [
     "npm",
