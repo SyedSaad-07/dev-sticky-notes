@@ -26,30 +26,39 @@ function loadNotes() {
 /**
  * Save notes to the JSON file
  */
-function saveNotes(notes) {
+const saveNotes = (notes) => {
   fs.writeJsonSync(NOTES_FILE, notes, { spaces: 2 });
 }
 
 /**
  * Add a new note
  */
-function addNote(title, content) {
-  const notes = loadNotes();
-  notes.push({ id: Date.now(), title, content });
-  saveNotes(notes);
-  console.log("✅ Note added successfully");
+const addNote = (title, content, tags) => {
+  try {
+    const notes = loadNotes();
+    if (tags && Array.isArray(tags) && tags?.length > 0) {
+      notes.push({ id: Date.now(), title, content, tags: tags });
+    } else {
+      notes.push({ id: Date.now(), title, content });
+    }
+    saveNotes(notes);
+    console.log("✅ Note added successfully");
+  } catch (error) {
+    console.log("Error adding ");
+  }
 }
 /**
  * List all notes
  */
-function listNotes() {
+const listNotes = () => {
   const notes = loadNotes();
   if (notes.length === 0) {
     console.log("❌ No notes found!");
   } else {
     console.log("📌 Your Notes:");
     notes.forEach((note, index) => {
-      console.log(`${index + 1}. [${note?.title}] - ${note?.content}`);
+      const tags = (note?.tags)?.length ? `[${note?.tags}]` : `[]`;
+      console.log(`${index + 1}. [${note?.title}] - ${note?.content} - ${tags}`);
     });
   }
 }
@@ -58,7 +67,7 @@ function listNotes() {
  * Delete a note by title
  */
 
-function deleteNote(title) {
+const deleteNote = (title) => {
   let notes = loadNotes();
   const filteredNotes = notes?.filter((note) => note.title !== title);
   if (notes?.length === filteredNotes?.length) {
@@ -72,7 +81,7 @@ function deleteNote(title) {
 /**
  * Search notes by keyword
  */
-function searchNotes(keyword) {
+const searchNotes = (keyword) => {
   const notes = loadNotes();
   const results = notes.filter(
     (note) => note.title.includes(keyword) || notes?.content.includes(keyword)
@@ -86,4 +95,26 @@ function searchNotes(keyword) {
     });
   }
 }
-module.exports = { addNote, listNotes, deleteNote, searchNotes };
+
+const exportNotesToMarkDown = () => {
+  const notes = loadNotes();
+  const outputDir = path.join(__dirname, "exported_notes");
+
+  if(!fs.existsSync(outputDir)){
+    fs.mkdirSync(outputDir);
+  }
+
+  let markdownContent = '# Exported Notes\n\n';
+  notes.forEach( note => {
+    const {title, content, tags} = note;
+    const formattedTags = tags && Array.isArray(tags) && tags?.length > 0 ? `\n\n**Tags:** ${tags.join(',')}` : '';
+    markdownContent += `## ${title}\n\n${content}${formattedTags}\n\n---\n\n`;
+  })
+
+  // const safeTitle = title.replace(`/[^a-z0-9]`, '_').toLowerCase();
+  const filePath = path.join(outputDir, 'all_notes.md');
+
+  fs.writeFileSync(filePath, markdownContent, 'utf8');
+  console.log(`Exported all notes to: , ${filePath}`);
+}
+module.exports = { addNote, listNotes, deleteNote, searchNotes, exportNotesToMarkDown };
