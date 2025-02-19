@@ -98,7 +98,7 @@ const searchNotes = (keyword) => {
 
 const exportNotesToMarkDown = () => {
   const notes = loadNotes();
-  const outputDir = path.join(__dirname, "exported_notes");
+  const outputDir = process.cwd();
 
   if(!fs.existsSync(outputDir)){
     fs.mkdirSync(outputDir);
