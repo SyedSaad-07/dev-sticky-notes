@@ -1,7 +1,7 @@
 {
   "name": "dev-sticky-notes",
   "version": "1.0.0",
-  "description": "A CLI tool for developers to create, list, delete, and manage sticky notes stored in a local JSON file.",
+  "description": "A simple CLI tool to manage sticky notes. Use it via CLI or as a module in your code.",
   "keywords": [
     "npm", "cli", "notes", "sticky", "dev"
   ],
