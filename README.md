@@ -17,19 +17,19 @@ npm i dev-sticky-notes
 ## 📖 Usage
 Once installed, you can use the following commands in your terminal:
 ✅ Add a new note with tags (tags is optional):
-sticky-notes add "Meeting" "Discuss project updates" --tags work urgent
+npx sticky-notes add "Meeting" "Discuss project updates" --tags work urgent
 
 ✅ List all notes:
-sticky-notes list
+npx sticky-notes list
 
 ✅ Delete a note by title:
-sticky-notes delete "Meeting"
+npx sticky-notes delete "Meeting"
 
 ✅ Search notes by keyword:
-sticky-notes search "project"
+npx sticky-notes search "project"
 
 ✅ Export notes as .md file:
-sticky-notes export
+npx sticky-notes export
 
 ---
 
