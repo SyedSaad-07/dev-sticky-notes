@@ -22,7 +22,7 @@
   "type": "commonjs",
   "main": "src/index.js",
   "bin": {
-    "sticky-notes": "bin/sticky-notes.js"
+    "sticky-notes": "./bin/sticky-notes.js"
   },
   "scripts": {
     "test": "npm run test"
